@@ -1,3 +1,9 @@
+import os
+import sys
+
+repo_root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+if repo_root not in sys.path:
+    sys.path.insert(0, repo_root)
 """
 Unit and Integration Test Suite for TACD & PISA-1200.
 """

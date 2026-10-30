@@ -17,6 +17,11 @@ import argparse
 from dataclasses import dataclass, asdict, field
 from typing import List, Dict, Any, Tuple, Optional
 
+import sys
+repo_root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+if repo_root not in sys.path:
+    sys.path.insert(0, repo_root)
+
 from core.extractor import SceneTopologyGraph, StructuralTopologyExtractor
 from core.decoder import TACDDecoder, TACDConfig
 
