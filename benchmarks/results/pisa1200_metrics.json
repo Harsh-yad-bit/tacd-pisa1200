@@ -1,0 +1,41 @@
+{
+  "total_evaluated": 1200,
+  "adversarial_evaluated": 240,
+  "overall_baseline_accuracy": 80.0,
+  "overall_tacd_accuracy": 95.33,
+  "overall_baseline_hallucination_rate": 20.0,
+  "overall_tacd_hallucination_rate": 4.67,
+  "overall_hallucination_drop_pct": 76.67,
+  "adversarial_abstention_precision": 1.0,
+  "adversarial_abstention_recall": 0.7667,
+  "adversarial_abstention_f1": 0.8679,
+  "tier_metrics": {
+    "tier1_identification": {
+      "total": 400,
+      "adversarial_count": 80,
+      "baseline_accuracy": 80.0,
+      "tacd_accuracy": 96.0,
+      "baseline_hallucination_rate": 20.0,
+      "tacd_hallucination_rate": 4.0,
+      "hallucination_drop_pct": 80.0
+    },
+    "tier2_topology": {
+      "total": 400,
+      "adversarial_count": 80,
+      "baseline_accuracy": 80.0,
+      "tacd_accuracy": 100.0,
+      "baseline_hallucination_rate": 20.0,
+      "tacd_hallucination_rate": 0.0,
+      "hallucination_drop_pct": 100.0
+    },
+    "tier3_causal": {
+      "total": 400,
+      "adversarial_count": 80,
+      "baseline_accuracy": 80.0,
+      "tacd_accuracy": 90.0,
+      "baseline_hallucination_rate": 20.0,
+      "tacd_hallucination_rate": 10.0,
+      "hallucination_drop_pct": 50.0
+    }
+  }
+}
