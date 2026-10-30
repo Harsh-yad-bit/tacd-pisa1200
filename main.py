@@ -16,6 +16,7 @@ from typing import Optional
 
 from core.extractor import StructuralTopologyExtractor, SceneTopologyGraph
 from core.decoder import TACDDecoder, TACDConfig
+from core.api_adapter import ExternalVLMClient
 
 
 def format_header() -> str:
@@ -33,7 +34,9 @@ def run_comparison(
     query: str,
     alpha: float = 0.6,
     beta: float = 0.1,
-    output_path: Optional[str] = None
+    output_path: Optional[str] = None,
+    provider: str = "local",
+    model_name: Optional[str] = None
 ) -> None:
     """Executes side-by-side contrastive comparison between Baseline and TACD."""
     print(format_header())
@@ -135,6 +138,19 @@ def main():
         help="Adaptive truncation threshold beta (filters tokens with P_expert < beta * max(P_expert))",
     )
     parser.add_argument(
+        "--provider",
+        type=str,
+        choices=["local", "gemini", "openai"],
+        default="local",
+        help="Multimodal model provider: 'local' (built-in TACD engine), 'gemini' (Google Gemini API), or 'openai' (ChatGPT)",
+    )
+    parser.add_argument(
+        "--model",
+        type=str,
+        default=None,
+        help="Optional model name for external provider (e.g. 'gemini-1.5-flash', 'gpt-4o')",
+    )
+    parser.add_argument(
         "--mode",
         type=str,
         choices=["compare", "extract", "benchmark"],
@@ -170,6 +186,8 @@ def main():
             alpha=args.alpha,
             beta=args.beta,
             output_path=args.output,
+            provider=args.provider,
+            model_name=args.model,
         )
     elif args.mode == "extract":
         print(f"Extracting layout topology graph from: {args.image}")
